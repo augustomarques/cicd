@@ -211,7 +211,7 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>br/com/amarques/cicd/CustomerRegistrationApplication*</exclude>
+						<exclude>br/com/amarques/cicd/CicdApplication*</exclude>
 						<exclude>br/com/amarques/cicd/dto/**</exclude>
 						<exclude>br/com/amarques/cicd/exception/**</exclude>
 					</excludes>
