@@ -1,10 +1,10 @@
-name: UnitTest
+name: Running unit tests
 
 on:
   workflow_call:
 
 jobs:
-  sonarcube:
+  unit-test:
     runs-on: ubuntu-22.04
 
     steps:
@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
 
       - name: cache dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}

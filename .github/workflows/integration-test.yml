@@ -1,4 +1,4 @@
-name: IntegrationTest
+name: Running integration tests
 
 on:
   workflow_call:
@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
 
       - name: cache dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
