@@ -15,3 +15,4 @@ jobs:
   sonarcube:
     needs: integration-test
     uses: ./.github/workflows/sonarcube.yml
+    secrets: inherit
