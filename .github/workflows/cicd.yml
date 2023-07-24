@@ -5,19 +5,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-  unit-test:
-    uses: ./.github/workflows/unit-test.yml
-
-  integration-test:
-    needs: unit-test
-    uses: ./.github/workflows/integration-test.yml
-
-  sonarcube:
-    needs: integration-test
-    uses: ./.github/workflows/sonarcube.yml
+  test-code-quality:
+    uses: ./.github/workflows/tests.yml
     secrets: inherit
 
   deploy:
-    needs: sonarcube
+    needs: test-code-quality
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
