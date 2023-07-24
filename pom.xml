@@ -229,6 +229,9 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <outputFormats>
+                        <outputFormat>xml</outputFormat>
+                    </outputFormats>
                     <targetClasses>
                         <param>br.com.amarques.cicd.service.*</param>
                     </targetClasses>
