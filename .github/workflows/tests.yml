@@ -44,3 +44,13 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.pitest:pitest-maven:mutationCoverage org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=augustomarques_cicd_AYl92uatMuLZSEg205zM -DskipUnitTests -DskipIntegrationTests
+        
+      - name: Quality Gate Check
+        run: |
+          curl --location --request GET '${{ secrets.SONAR_HOST_URL }}/api/qualitygates/project_status?projectKey=${{ secrets.SONAR_PROJECT_KEY }}&branch=${{ github.ref }}&pullRequest=${{ github.event.number }}' \
+            --header 'Authorization: Basic ${{ secrets.SONAR_LOGIN }}' \
+            --header 'Content-Type: application/json' \
+            --fail \
+            --silent \
+            --show-error \
+            | jq '.projectStatus.status' | grep ERROR && exit 1 || exit 0
